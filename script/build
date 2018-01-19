@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -z "$1" ]; then
+    echo "Build path is required"
+    echo "Usage: script/build <path>"
+    exit 2
+fi
+
+BUILD_PATH="${1%%/}"
+IMAGE_NAME="sspinc/ci-$(dirname $BUILD_PATH):$(basename $BUILD_PATH)"
+
+docker build -t $IMAGE_NAME $BUILD_PATH
