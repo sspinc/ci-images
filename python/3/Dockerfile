@@ -13,7 +13,7 @@ RUN apt-get update \
         && curl -sSL https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip -o /tmp/protoc.zip \
         && unzip -d /usr/local /tmp/protoc.zip \
         && rm -f /tmp/protoc.zip \
-        && pip install awscli \
+        && pip install awscli virtualenv \
         && mkdir /go \
         && curl -sSLo /usr/local/bin/dep https://github.com/golang/dep/releases/download/${DEP_VERSION}/dep-linux-amd64 \
         && chmod +x /usr/local/bin/dep
