@@ -1,4 +1,4 @@
-FROM golang:1.9
+FROM golang:1.10
 
 ARG DOCKER_VERSION=17.12.0-ce
 ARG DEP_VERSION=v0.4.1
