@@ -7,7 +7,7 @@ ARG PROTOC_VERSION=3.3.0
 ARG DEP_VERSION=v0.4.1
 
 RUN mkdir /usr/local/maven \
-        && curl -sSL http://www-us.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+        && curl -sSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
         | tar -xzC /usr/local/maven --strip-components 1 \
         && curl -sSL https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz | tar -xzC /usr/local \
         && curl -sSL https://download.docker.com/linux/static/stable/x86_64/docker-${DOCKER_VERSION}.tgz | tar -xzC /usr/local/bin --strip-components 1 \
