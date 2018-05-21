@@ -1,10 +1,10 @@
 FROM openjdk:8
 
-ARG MAVEN_VERSION=3.5.2
-ARG GO_VERSION=1.9.2
+ARG MAVEN_VERSION=3.5.3
+ARG GO_VERSION=1.10.2
 ARG DOCKER_VERSION=17.12.0-ce
 ARG PROTOC_VERSION=3.3.0
-ARG DEP_VERSION=v0.3.2
+ARG DEP_VERSION=v0.4.1
 
 RUN mkdir /usr/local/maven \
         && curl -sSL http://www-us.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
