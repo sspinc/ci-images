@@ -1,10 +1,11 @@
 FROM openjdk:8
 
 ARG MAVEN_VERSION=3.5.3
-ARG GO_VERSION=1.10.2
+ARG GO_VERSION=1.10.3
 ARG DOCKER_VERSION=17.12.0-ce
 ARG PROTOC_VERSION=3.3.0
 ARG DEP_VERSION=v0.4.1
+ARG SONAR_SCANNER_VERSION=3.2.0.1227
 
 RUN mkdir /usr/local/maven \
         && curl -sSL https://archive.apache.org/dist/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
@@ -19,12 +20,15 @@ RUN mkdir /usr/local/maven \
         && rm -rf /var/lib/apt/lists/* \
         && pip install wheel \
         && pip install awscli \
+        && curl -sSL https://sonarsource.bintray.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${SONAR_SCANNER_VERSION}-linux.zip -o /tmp/sonar.zip \
+        && unzip -d /opt tmp/sonar.zip \
+        && rm /tmp/sonar.zip \
         && curl -sSLo /usr/local/bin/dep https://github.com/golang/dep/releases/download/${DEP_VERSION}/dep-linux-amd64 \
         && chmod +x /usr/local/bin/dep \
         && mkdir /code
 
 ENV MAVEN_HOME /usr/local/maven
-ENV PATH "$PATH:/usr/local/maven/bin:/usr/local/go/bin:/code/bin"
+ENV PATH "$PATH:/usr/local/maven/bin:/usr/local/go/bin:/code/bin:/opt/sonar-scanner-${SONAR_SCANNER_VERSION}-linux/bin"
 ENV GOPATH "/code"
 
 RUN go get -v github.com/golang/protobuf/proto \
