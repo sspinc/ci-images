@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3.6
 
 ARG GO_VERSION=1.9.4
 ARG DOCKER_VERSION=17.12.0-ce
