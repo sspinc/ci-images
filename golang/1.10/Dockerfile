@@ -9,7 +9,7 @@ RUN curl -o /tmp/docker-${DOCKER_VERSION}.tgz https://download.docker.com/linux/
     mv /tmp/docker/* /usr/local/bin && \
     rm -f /tmp/docker-${DOCKER_VERSION}.tgz && \
     apt-get update && \
-    apt-get install unzip postgresql-client netcat make python python-pip python-setuptools -y --no-install-recommends && \
+    apt-get install unzip postgresql-client netcat make python python-pip python-setuptools librdkafka-dev -y --no-install-recommends && \
     rm -rf /var/lib/apt/lists/* && \
     curl -Lo /tmp/protoc.zip https://github.com/google/protobuf/releases/download/v${PROTOC_VERSION}/protoc-${PROTOC_VERSION}-linux-x86_64.zip && \
     unzip -d /usr/local /tmp/protoc.zip && \
